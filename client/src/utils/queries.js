@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+// This page has the examples from both deep-thought and book app
 
 // export const QUERY_THOUGHTS = gql`
 //   query thoughts($username: String) {
@@ -57,44 +58,65 @@ import { gql } from '@apollo/client';
 //   }
 // `;
 
-export const QUERY_ME = gql`
-  {
-    me {
-      _id
-      username
-      email
-      friendCount
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-        reactionCount
-        reactions {
-          _id
-          createdAt
-          reactionBody
-          username
-        }
-      }
-      friends {
-        _id
-        username
-      }
-    }
-  }
-`;
+// export const QUERY_ME = gql`
+//   {
+//     me {
+//       _id
+//       username
+//       email
+//       friendCount
+//       thoughts {
+//         _id
+//         thoughtText
+//         createdAt
+//         reactionCount
+//         reactions {
+//           _id
+//           createdAt
+//           reactionBody
+//           username
+//         }
+//       }
+//       friends {
+//         _id
+//         username
+//       }
+//     }
+//   }
+// `;
 
-export const QUERY_ME_BASIC = gql`
-  {
-    me {
-      _id
-      username
-      email
-      friendCount
-      friends {
-        _id
-        username
-      }
-    }
-  }
-`;
+// export const QUERY_ME_BASIC = gql`
+//   {
+//     me {
+//       _id
+//       username
+//       email
+//       friendCount
+//       friends {
+//         _id
+//         username
+//       }
+//     }
+//   }
+// `;
+
+
+// From book app
+// export const GET_ME = gql`
+//   {
+//     me {
+//       _id
+//       username
+//       email
+//       bookCount
+//       savedBooks {
+//         bookId
+//         authors
+//         image
+//         link
+//         title
+//         description
+//       }
+//     }
+//   }
+// `;
