@@ -1,3 +1,5 @@
+// this file is used in the book app only, and will demonstrate some of what we will need to do for an api call.  12/27/22 This isn't currently doing anything in the app.
+
 export const getSavedBookIds = () => {
   const savedBookIds = localStorage.getItem('saved_books')
     ? JSON.parse(localStorage.getItem('saved_books'))

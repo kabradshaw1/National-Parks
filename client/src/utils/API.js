@@ -1,3 +1,4 @@
+// This along with the local storage app makes up the bulk of the code used in the bookstore app for the api call.  12/27/22 This isn't currently doing anything in the app.
 // route to get logged in user's info (needs the token)
 export const getMe = (token) => {
   return fetch('/api/users/me', {

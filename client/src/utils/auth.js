@@ -1,5 +1,5 @@
 import decode from 'jwt-decode';
-
+// This file was included more or less unchanged in both deep thoughts and the book app.
 class AuthService {
   getProfile() {
     return decode(this.getToken());

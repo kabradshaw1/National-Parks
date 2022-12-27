@@ -37,48 +37,48 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+// {/* <Route 
+// path="/thought/:id" 
+// element={<SingleThought />} 
+// /> */}
+
 function App() {
   return (
     <ApolloProvider client={client}>
-
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+          <div className="container">
+            <Routes>
+              <Route 
+                path="/" 
+                element={<Home />} 
+              />
+              <Route 
+                path="/login" 
+                element={<Login />} 
+              />
+              <Route 
+                path="/signup" 
+                element={<Signup />} 
+              />
+              <Route 
+                path="/profile" 
+                element={<Profile />} 
+              />
+             
+              <Route 
+                path="*" 
+                element={<NoMatch />} 
+              />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
+      </Router>
     </ApolloProvider>
-    // <ApolloProvider client={client}>
-    //   <Router>
-    //     <div className="flex-column justify-flex-start min-100-vh">
-    //       <Header />
-    //       <div className="container">
-    //         <Routes>
-    //           <Route 
-    //             path="/" 
-    //             element={<Home />} 
-    //           />
-    //           <Route 
-    //             path="/login" 
-    //             element={<Login />} 
-    //           />
-    //           <Route 
-    //             path="/signup" 
-    //             element={<Signup />} 
-    //           />
-    //           <Route 
-    //             path="/profile" 
-    //             element={<Profile />} 
-    //           />
-    //           <Route 
-    //             path="/thought/:id" 
-    //             element={<SingleThought />} 
-    //           />
-    //           <Route 
-    //             path="*" 
-    //             element={<NoMatch />} 
-    //           />
-    //         </Routes>
-    //       </div>
-    //       <Footer />
-    //     </div>
-    //   </Router>
-    // </ApolloProvider>
   );
 }
+
 
 export default App;

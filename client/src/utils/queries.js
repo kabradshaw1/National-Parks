@@ -1,6 +1,28 @@
 import { gql } from '@apollo/client';
-// This page has the examples from both deep-thought and book app
+// This file currently has all the content of both the book app and deep thoughts app.  They are labelled and slightly seperated
 
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+    }
+  }
+`;
+
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+    }
+  }
+`;
+
+
+// Deep Thoughts
 // export const QUERY_THOUGHTS = gql`
 //   query thoughts($username: String) {
 //     thoughts(username: $username) {
@@ -101,7 +123,8 @@ import { gql } from '@apollo/client';
 // `;
 
 
-// From book app
+
+// Book app
 // export const GET_ME = gql`
 //   {
 //     me {
