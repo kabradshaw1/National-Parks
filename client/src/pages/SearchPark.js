@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useMutation } from "@apollo/react-hooks";
 import Auth from '../utils/auth';
 import { searchPark } from '../utils/API';
-import { savedParkData, getSavedParkData } from '../utils/localStorage';
+import { savedParkIds, getSavedParkId } from '../utils/localStorage';
 import { } from "../utils/mutations";
 
 const SearchPark = () => {
@@ -12,14 +12,15 @@ const SearchPark = () => {
   const [searchInput, setSearchInput] = useState('');
 
   // create state to hold saved data from api call
-  const [savedParkData, setSavedParkData] = useState(getSavedParkData());
+  const [savedParkId, setSavedParkId] = useState(getSavedParkId());
 
   const [savePark] = useMutation(SAVED_PARK);
 
   useEffect(() => {
-    return () => savePark(savePark);
+    return () => saveParkIds(saveParkIds);
   });
 
+  // create method to search for books and set state on form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -40,16 +41,42 @@ const SearchPark = () => {
       const parkData = items.map((park) => ({
 
       }))
+
+      setSearchedParks(parkData);
+      setSearchInput('');
     } catch(err) {
       console.error(err);
     }
   }
 
+  // create function to handle saving a park to our database
+  const handleSaveBook = async (parkId) => {
+    // find the park in `searchedParks` state by the matching id
+    const parkToSave = searchedParks.find((park) => park.parkId === parkId);
+
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : mull;
+
+    if(!token) {
+      return false;
+    }
+
+    try { 
+      await savePark({
+        variables: { input: parkToSave },
+      });
+
+      setSavedParkIds([...savedParkIds, oarkToSave.parkId]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
       <Jumbotron fluid className=''>
         <Container>
-          <h1>Search for Books!</h1>
+          <h1>Search for Park!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
