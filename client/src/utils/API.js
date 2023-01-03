@@ -55,5 +55,5 @@ export const deleteBook = (bookId, token) => {
 // make a search to google books api
 // https://www.googleapis.com/books/v1/volumes?q=harry+potter
 export const searchPark = (query) => {
-  return fetch(`https://www.developer.nps.gov/api/v1/${query}`);
+  return fetch(`https://developer.nps.gov/api/v1/activities?${query}`);
 };

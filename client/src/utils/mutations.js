@@ -32,9 +32,9 @@ export const SAVE_PARK = gql`
       _id
       username
       email
-      partCount
+      parkCount
       savedParks {
-        
+
       }
     }
   }
