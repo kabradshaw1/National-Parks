@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/react-hooks";
 import Auth from '../utils/auth';
 import { searchPark } from '../utils/API';
 import { savedParkIds, getSavedParkId } from '../utils/localStorage';
-import { } from "../utils/mutations";
+import { SAVE_PARK } from "../utils/mutations";
 
 const SearchPark = () => {
   // create state for holding returned park api data
@@ -14,7 +14,7 @@ const SearchPark = () => {
   // create state to hold saved data from api call
   const [savedParkId, setSavedParkId] = useState(getSavedParkId());
 
-  const [savePark] = useMutation(SAVED_PARK);
+  const [savePark] = useMutation(SAVE_PARK);
 
   useEffect(() => {
     return () => saveParkIds(saveParkIds);
@@ -134,3 +134,5 @@ const SearchPark = () => {
     </>
   )
 }
+
+export default SearchPark;
