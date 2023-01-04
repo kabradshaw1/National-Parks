@@ -8,19 +8,17 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
-// old className for header was bg-secondary mb-4 py-2 flex-row align-center
-// old className for div was container flex-row justify-space-between-lg justify-center align-center
-// old className for nav was text-center
+
   return (
     <div>
     <header className="">
       
-      <div className="">
+      <div className="container flex-row justify-space-between-lg justify-center align-center">
         <Link to="/">
           <h1>TBD</h1>
         </Link>
         
-        <nav className="">
+        <nav className="text-center">
           {Auth.loggedIn() ? (
             <>
               <Link to="/profile">Me</Link>
