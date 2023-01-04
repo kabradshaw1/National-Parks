@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { useMutation } from "@apollo/react-hooks";
 import Auth from '../utils/auth';
-import { searchPark } from '../utils/API';
+import { searchParkAPI } from '../utils/API';
 // import { savedParkIds, getSavedParkId } from '../utils/localStorage';
 import { SAVE_PARK } from "../utils/mutations";
 
@@ -29,7 +29,7 @@ const SearchPark = () => {
     }
     
     try {
-      const response = await searchPark(searchInput);
+      const response = await searchParkAPI(searchInput);
     
 
       if(!response.ok) {

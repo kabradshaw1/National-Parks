@@ -25,7 +25,8 @@ const Home = () => {
 
   return (
     <main>
-      <h1>home</h1>   
+      <h1>home</h1>
+      
     </main>
     // <main>
     //   <div className="flex-row justify-space-between">
