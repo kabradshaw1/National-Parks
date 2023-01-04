@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useMutation } from "@apollo/react-hooks";
+// import { useMutation } from "@apollo/react-hooks";
 import Auth from '../utils/auth';
 import { searchPark } from '../utils/API';
-import { savedParkIds, getSavedParkId } from '../utils/localStorage';
+// import { savedParkIds, getSavedParkId } from '../utils/localStorage';
 import { SAVE_PARK } from "../utils/mutations";
 
 const SearchPark = () => {
@@ -20,7 +20,7 @@ const SearchPark = () => {
     return () => saveParkIds(saveParkIds);
   });
 
-  // create method to search for books and set state on form submit
+  // create method to search for parks and set state on form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -50,7 +50,7 @@ const SearchPark = () => {
   }
 
   // create function to handle saving a park to our database
-  const handleSaveBook = async (parkId) => {
+  const handleSavePark = async (parkId) => {
     // find the park in `searchedParks` state by the matching id
     const parkToSave = searchedParks.find((park) => park.parkId === parkId);
 
@@ -100,33 +100,34 @@ const SearchPark = () => {
       </Jumbotron>
       <Container>
         <h2>
-          {searchedBooks.length
-            ? `Viewing ${searchedBooks.length} results:`
-            : 'Search for a book to begin'}
+          {searchedParks.length
+            ? `Viewing ${searchedParks.length} results:`
+            : 'Search for a park to begin'}
         </h2>
         <CardColumns>
-          {searchedBooks.map((book) => {
+          {searchedParks.map((park) => {
             return (
-              <Card key={book.bookId} border='dark'>
-                {book.image ? (
-                  <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' />
-                ) : null}
-                <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
-                  <p className='small'>Authors: {book.authors}</p>
-                  <Card.Text>{book.description}</Card.Text>
-                  {Auth.loggedIn() && (
-                    <Button
-                      disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
-                      className='btn-block btn-info'
-                      onClick={() => handleSaveBook(book.bookId)}>
-                      {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
-                        ? 'This book has already been saved!'
-                        : 'Save this Book!'}
-                    </Button>
-                  )}
-                </Card.Body>
-              </Card>
+              <div>cool searched stuff</div>
+              // <Card key={park.parkId} border='dark'>
+              //   {park.image ? (
+              //     <Card.Img src={park.image} alt={`The cover for ${park.title}`} variant='top' />
+              //   ) : null}
+              //   <Card.Body>
+              //     <Card.Title>{book.title}</Card.Title>
+              //     <p className='small'>Authors: {book.authors}</p>
+              //     <Card.Text>{book.description}</Card.Text>
+              //     {Auth.loggedIn() && (
+              //       <Button
+              //         disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
+              //         className='btn-block btn-info'
+              //         onClick={() => handleSaveBook(book.bookId)}>
+              //         {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
+              //           ? 'This book has already been saved!'
+              //           : 'Save this Book!'}
+              //       </Button>
+              //     )}
+              //   </Card.Body>
+              // </Card>
             );
           })}
         </CardColumns>
