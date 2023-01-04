@@ -2,7 +2,8 @@ import React from 'react';
 // import ThoughtList from '../components/ThoughtList';
 // import ThoughtForm from '../components/ThoughtForm';
 // import FriendList from '../components/FriendList';
-import SearchForm from '../components/SearchForm';
+// import SearchForm from '../components/SearchForm';
+import Results from '../components/Results';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 // QUERY_THOUGHTS, QUERY_ME_BASIC
@@ -18,8 +19,9 @@ const Home = () => {
 
   return (
     <main>
-      <h1>home</h1>
-      <SearchForm></SearchForm>
+      <h1>Home</h1>
+      {/* <SearchForm/> */}
+      <Results/>
     </main>
     // <main>
     //   <div className="flex-row justify-space-between">
