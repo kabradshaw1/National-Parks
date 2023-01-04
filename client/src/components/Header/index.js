@@ -40,13 +40,9 @@ const Header = () => {
     <section class="hero">
       <div class="overlay">
         <div class="hero-cta">
-          <h2>Welcome to our National Park Website</h2>
+          <h2>Access Our National Parks</h2>
           <p>
-            
-            This is where we pull put a very important message bout our Website
-
-
-
+            Getting Everyone the Information They Need to Enjoy our National Parks
           </p>
           </div>
         </div>
