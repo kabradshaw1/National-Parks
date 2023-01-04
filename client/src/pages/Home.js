@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 // QUERY_THOUGHTS, QUERY_ME_BASIC
 // import {  } from '../utils/queries';
-import { searchPark } from '../utils/API';
+import { searchParkAPI } from '../utils/API';
 
 const Home = () => {
   // const { loading, data } = useQuery(QUERY_THOUGHTS);
@@ -18,14 +18,15 @@ const Home = () => {
 
   useEffect(()=>{
     console.log('hello')
-    searchPark().then((res)=>{return res.json()}).then(data => {
+    searchParkAPI().then((res)=>{return res.json()}).then(data => {
       console.log(data)
     }) 
-  }, [searchPark])
+  }, [searchParkAPI])
 
   return (
     <main>
-      <h1>home</h1>   
+      <h1>home</h1>
+      
     </main>
     // <main>
     //   <div className="flex-row justify-space-between">
