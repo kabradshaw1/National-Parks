@@ -10,7 +10,8 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-secondary mb-4 py-2 flex-row align-center">
+    <div>
+    <header className="">
       
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <Link to="/">
@@ -34,6 +35,21 @@ const Header = () => {
         </nav>
       </div>
     </header>
+    <section class="hero">
+      <div class="overlay">
+        <div class="hero-cta">
+          <h2>Welcome to our National Park Website</h2>
+          <p>
+            
+            This is where we pull put a very important message bout our Website
+
+
+
+          </p>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 
