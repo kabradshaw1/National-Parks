@@ -8,11 +8,11 @@ export const getSavedBookIds = () => {
   return savedBookIds;
 };
 
-export const saveBookIds = (bookIdArr) => {
-  if (bookIdArr.length) {
-    localStorage.setItem('saved_books', JSON.stringify(bookIdArr));
+export const savePark = (parkArr) => {
+  if (parkArr.length) {
+    localStorage.setItem('saved_park', JSON.stringify(parkArr));
   } else {
-    localStorage.removeItem('saved_books');
+    localStorage.removeItem('saved_park');
   }
 };
 

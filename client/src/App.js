@@ -17,6 +17,7 @@ import NoMatch from './pages/NoMatch';
 // import SingleThought from './pages/SingleThought';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+import SearchAPI from './pages/SearchPark'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -66,7 +67,10 @@ function App() {
                 path="/profile" 
                 element={<Profile />} 
               />
-             
+             <Route 
+                path="/Search" 
+                element={<SearchAPI />} 
+              />
               <Route 
                 path="*" 
                 element={<NoMatch />} 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 // import ThoughtList from '../components/ThoughtList';
 // import ThoughtForm from '../components/ThoughtForm';
 // import FriendList from '../components/FriendList';
@@ -6,7 +6,8 @@ import React from 'react';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 // QUERY_THOUGHTS, QUERY_ME_BASIC
-import {  } from '../utils/queries';
+// import {  } from '../utils/queries';
+import { searchPark } from '../utils/API';
 
 const Home = () => {
   // const { loading, data } = useQuery(QUERY_THOUGHTS);
@@ -15,9 +16,16 @@ const Home = () => {
 
   const loggedIn = Auth.loggedIn();
 
+  useEffect(()=>{
+    console.log('hello')
+    searchPark().then((res)=>{return res.json()}).then(data => {
+      console.log(data)
+    }) 
+  }, [searchPark])
+
   return (
     <main>
-      
+      <h1>home</h1>   
     </main>
     // <main>
     //   <div className="flex-row justify-space-between">
