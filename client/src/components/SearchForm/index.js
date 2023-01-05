@@ -42,7 +42,7 @@ const SearchForm = (event) => {
         id: park.id,
         name: park.name || ['No activities found']
       }));
-
+      console.log(parkData);
       setSearchedPark(parkData);
       setSearchInput('');
     } catch (err) {
@@ -51,27 +51,25 @@ const SearchForm = (event) => {
   };
 
   return (
-    <>
     <form 
       className="flex-row justify-center justify-space-between-md align-stretch"
       onSubmit={handleFormSubmit}
     >
-      <div class="select">
-        <select name='searchInput' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} type=''>
+      <div className="select">
+        <select name='searchInput' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} >
             <option>--Select--</option>
             <option>Hello 1</option>
             <option>Hello 2</option>
             <option>Hello 3</option>
             <option>Hello 4</option>
         </select>
-        <div class="select_arrow">
+        <div className="select_arrow">
         </div>
       </div>
-        <button className="btn col-12 col-md-3" type="submit" id='searchPark'>
+        <button className="btn col-12 col-md-3" type="submit">
           Submit
         </button>
     </form>
-    </>
   )
 }
 
