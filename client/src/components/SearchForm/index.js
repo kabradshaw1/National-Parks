@@ -36,15 +36,10 @@ const SearchForm = () => {
         throw new Error('something went wrong!');
       }
       
-      const { items } = await response.json();
-      
-      const parkData = items.map((park) => ({
-        id: park.id,
-        name: park.name || ['No activities found'],
-      }));
-      
-      
-      setSearchedPark(parkData);
+      const items  = await response.json();
+      const items2 = items.data;
+     
+      setSearchedPark(items2);
     } catch (err) {
       console.error(err);
     }
@@ -56,7 +51,7 @@ const SearchForm = () => {
       onSubmit={handleFormSubmit}
     >
       <div className="select">
-        <select name='searchInput' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} >
+        <select className='' name='searchInput' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} >
             <option>--Select--</option>
             <option>parks</option>
             <option>Hello 2</option>
