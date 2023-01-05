@@ -26,19 +26,18 @@ export const ADD_USER = gql`
   }
 `;
 
-// export const SAVE_PARK = gql`
-//   mutation savePark($input: savedPark!) {
-//     savePark(input: $input) {
-//       _id
-//       username
-//       email
-//       parkCount
-//       savedParks {
-
-//       }
-//     }
-//   }
-// `;
+export const SAVE_PARK = gql`
+  mutation savePark($input: savedPark!) {
+    savePark(input: $input) {
+      _id
+      username
+      email
+      savedParks {
+        name
+      }
+    }
+  }
+`;
 
 // export const SAVE_BOOK = gql`
 //   mutation saveBook($input: savedBook!) {
