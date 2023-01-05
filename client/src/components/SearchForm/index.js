@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import { useMutation } from '@apollo/client';
-import { SAVE_PARK } from '../../utils/mutations';
+// import { useMutation } from '@apollo/client';
+// import { SAVE_PARK } from '../../utils/mutations';
 import { searchPark } from '../../utils/API';
 
-const SearchForm = (event) => {
+const SearchForm = () => {
   // create state for holding returned google api data
   const [searchedPark, setSearchedPark] = useState([]);
   // create state for holding our search field data
@@ -25,26 +25,26 @@ const SearchForm = (event) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     if(!searchInput) {
       return false
     };
 
     try {
       const response = await searchPark(searchInput);
-
+   
       if (!response.ok) { 
         throw new Error('something went wrong!');
       }
+      
       const { items } = await response.json();
-
+      
       const parkData = items.map((park) => ({
         id: park.id,
-        name: park.name || ['No activities found']
+        name: park.name || ['No activities found'],
       }));
-      console.log(parkData);
+      
+      
       setSearchedPark(parkData);
-      setSearchInput('');
     } catch (err) {
       console.error(err);
     }
@@ -58,7 +58,7 @@ const SearchForm = (event) => {
       <div className="select">
         <select name='searchInput' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} >
             <option>--Select--</option>
-            <option>Hello 1</option>
+            <option>parks</option>
             <option>Hello 2</option>
             <option>Hello 3</option>
             <option>Hello 4</option>

@@ -55,7 +55,7 @@ export const deleteBook = (bookId, token) => {
 // make a search to national park api
 
 export const searchPark = (query) => {
-  return fetch(`https://developer.nps.gov/api/v1/activities?${query}`,{
+  return fetch(`https://developer.nps.gov/api/v1/activities/${query}`,{
     headers: {
       "X-Api-Key": "gcGLNr6kSWCK2wgcyoCZkK9RJxGw7a5vKdJrLxth"
     }

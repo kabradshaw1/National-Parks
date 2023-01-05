@@ -1,15 +1,13 @@
-import React, { useEffect }from 'react';
-import { searchPark } from '../utils/API'
+import React, { useEffect } from 'react';
 
 import Results from '../components/Results';
 import SearchForm from '../components/SearchForm';
-import Auth from '../utils/auth';
-import { useQuery } from '@apollo/client';
+// import Auth from '../utils/auth';
 
 const Home = () => {
   // const { data: userData } = useQuery(QUERY_ME_BASIC);
 
-  const loggedIn = Auth.loggedIn();
+  // const loggedIn = Auth.loggedIn();
   // useEffect(()=>{
   //   searchPark().then((res)=>{return res.json()}).then(data => {
   //     console.log(data)
