@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
 
 const savedSchema = new Schema(
   {
@@ -19,6 +18,6 @@ const savedSchema = new Schema(
   }
 )
 
-const Saved = model('Saved', savedSchema)
+const Saved = model('Saved', savedSchema);
 
 module.exports = Saved;

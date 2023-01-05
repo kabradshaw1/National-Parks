@@ -12,12 +12,16 @@ const SearchForm = (event) => {
   // const [parkBody, setBody] = useState('');
   // const [savePark, { error }] = useMutation(SAVE_PARK);
 
-  useEffect(()=>{
-    console.log('hello')
-    searchPark().then((res)=>{return res.json()}).then(data => {
-      console.log(data)
-    }) 
-  }, [searchPark]);
+  // useEffect(()=>{
+  //   console.log('hello')
+  //   searchPark().then((res)=>{return res.json()}).then(data => {
+  //     console.log(data)
+  //   }) 
+  // }, [searchPark]);
+
+  // const handleChange = (event) => {
+    
+  // }
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -53,7 +57,7 @@ const SearchForm = (event) => {
       onSubmit={handleFormSubmit}
     >
       <div class="select">
-        <select>
+        <select name='searchInput' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} type=''>
             <option>--Select--</option>
             <option>Hello 1</option>
             <option>Hello 2</option>
