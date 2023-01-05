@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect }from 'react';
+import { searchPark } from '../utils/API'
 // import ThoughtList from '../components/ThoughtList';
 // import ThoughtForm from '../components/ThoughtForm';
 // import FriendList from '../components/FriendList';
 // import SearchForm from '../components/SearchForm';
 import Results from '../components/Results';
+import SearchForm from '../components/SearchForm';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
+
+
 // QUERY_THOUGHTS, QUERY_ME_BASIC
 // import {  } from '../utils/queries';
 
@@ -16,11 +20,16 @@ const Home = () => {
   // const thoughts = data?.thoughts || [];
 
   const loggedIn = Auth.loggedIn();
-
+  useEffect(()=>{
+    console.log('hello')
+    searchPark().then((res)=>{return res.json()}).then(data => {
+      console.log(data)
+    }) 
+  }, [searchPark])
   return (
     <main>
       <h1>Home</h1>
-      {/* <SearchForm/> */}
+      <SearchForm/>
       <Results/>
     </main>
     // <main>
