@@ -140,7 +140,7 @@ nav a:hover {
 
 /* Hero Style Start */
 .hero {
-  background-image: url("../src/assets/images/hero.webp");
+  background-image: url("../src/assets/images/hero.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
