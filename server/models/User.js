@@ -20,6 +20,12 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
+    saved: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Saved',
+      }
+    ],
     // I've left in the examples for both projects we've done with mern.
     // thoughts: [
     //   {
