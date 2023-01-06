@@ -11,28 +11,28 @@ const SearchForm = () => {
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
-  const [savePark, { error }] = useMutation(SAVE_PARK, {
-    update(cache, { data: {savePark} }) {
-        // could potentially not exist yet, so wrap in a try/catch
-      try {
-        // update me array's cache
-        const { me } = cache.readQuery({ query: QUERY_ME });
-        cache.writeQuery({
-          query: QUERY_ME,
-          data: { me: { ...me, saved: [...me.saved, savePark] } },
-        });
-      } catch (e) {
-        console.warn("First park insertion by user!")
-      }
+  // const [savePark, { error }] = useMutation(SAVE_PARK, {
+  //   update(cache, { data: {savePark} }) {
+  //       // could potentially not exist yet, so wrap in a try/catch
+  //     try {
+  //       // update me array's cache
+  //       const { me } = cache.readQuery({ query: QUERY_ME });
+  //       cache.writeQuery({
+  //         query: QUERY_ME,
+  //         data: { me: { ...me, saved: [...me.saved, savePark] } },
+  //       });
+  //     } catch (e) {
+  //       console.warn("First park insertion by user!")
+  //     }
 
     // update saved array's cache
-      const { saved } = cache.readQuery({ query: QUERY_SAVED });
-      cache.writeQuery({
-        query: QUERY_SAVED,
-        data: { saved: [savePark, ...saved] },
-      });
-    }
-  })
+  //     const { saved } = cache.readQuery({ query: QUERY_SAVED });
+  //     cache.writeQuery({
+  //       query: QUERY_SAVED,
+  //       data: { saved: [savePark, ...saved] },
+  //     });
+  //   }
+  // })
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -55,11 +55,11 @@ const SearchForm = () => {
       console.error(err);
     }
   };
-
+  const savePark = () =>{}
   const handleResultsSaved = async (event) => {
     event.preventDefault();
     
-    try{
+    try {
       await savePark({
         variables: { searchedPark },
       });

@@ -58,11 +58,11 @@ const resolvers = {
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { thoughts: thought._id } },
+          { $push: { saved: saved._id } },
           { new: true }
         );
 
-        return thought;
+        return saved;
       }
       
       throw new AuthenticationError('You need to be logged in!');
