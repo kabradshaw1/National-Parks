@@ -12,6 +12,10 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+  
+  type Save {
+    
+  }
 
   type Query {
     me: User
