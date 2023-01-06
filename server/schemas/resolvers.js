@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Saved } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -51,6 +51,21 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+    savePark: async (parent, args, context) => {
+      if (context.user) {
+        const saved = await Saved.create({ ...args, username: context.user.username });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { thoughts: thought._id } },
+          { new: true }
+        );
+
+        return thought;
+      }
+      
+      throw new AuthenticationError('You need to be logged in!');
     },
     // need lots of help. This needs to contain our new updates to the database, so once we decide what else
     // we want in to display as either pages or components, we will need to define our responses here.  I

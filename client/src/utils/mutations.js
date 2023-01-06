@@ -33,6 +33,7 @@ export const SAVE_PARK = gql`
       username
       email
       savedParks {
+        id
         name
       }
     }

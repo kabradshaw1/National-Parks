@@ -11,7 +11,7 @@ const SearchForm = () => {
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
-  const[savePark, { error }] = useMutation(SAVE_PARK, {
+  const [savePark, { error }] = useMutation(SAVE_PARK, {
     update(cache, { data: {savePark} }) {
         // could potentially not exist yet, so wrap in a try/catch
       try {
