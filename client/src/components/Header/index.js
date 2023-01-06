@@ -35,9 +35,9 @@ const Header = () => {
         </nav>
       </div>
     </header>
-    <section class="hero">
-      <div class="overlay">
-        <div class="hero-cta">
+    <section className="hero">
+      <div className="overlay">
+        <div className="hero-cta">
           <h2>Access Our National Parks</h2>
           <p>
             Getting Everyone the Information They Need to Enjoy our National Parks

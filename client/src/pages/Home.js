@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 
-import Results from '../components/Results';
 import SearchForm from '../components/SearchForm';
 // import Auth from '../utils/auth';
 
@@ -16,7 +15,6 @@ const Home = () => {
   return (
     <main>
       <SearchForm/>
-      <Results/>
     </main>
     // <main>
     //   <div className="flex-row justify-space-between">
