@@ -55,11 +55,11 @@ const SearchForm = () => {
       console.error(err);
     }
   };
-
+  
   const handleResultsSaved = async (event) => {
     event.preventDefault();
     
-    try{
+    try {
       await savePark({
         variables: { searchedPark },
       });

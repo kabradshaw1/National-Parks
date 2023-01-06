@@ -17,12 +17,23 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      saved {
+        _id
+        name
+      }
     }
   }
 `;
 
 export const QUERY_SAVED = gql`
-  
+  query saved($id: ID!) {
+    saved(_id: &id) {
+      _id
+      name
+      username
+      createdAt
+    }
+  }
 `;
 
 
