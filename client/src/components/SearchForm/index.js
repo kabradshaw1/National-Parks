@@ -1,14 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-// import { useMutation } from '@apollo/client';
-// import { SAVE_PARK } from '../../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { SAVE_PARK } from '../../utils/mutations';
 import { searchPark } from '../../utils/API';
+import { QUERY_SAVED, QUERY_ME } from '../../utils/queries'
 
 const SearchForm = () => {
   // create state for holding returned google api data
   const [searchedPark, setSearchedPark] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
+
+  const [savePark, { error }] = useMutation(SAVE_PARK, {
+    update(cache, { data: {savePark} }) {
+        // could potentially not exist yet, so wrap in a try/catch
+      try {
+        // update me array's cache
+        const { me } = cache.readQuery({ query: QUERY_ME });
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: { ...me, saved: [...me.saved, savePark] } },
+        });
+      } catch (e) {
+        console.warn("First park insertion by user!")
+      }
+
+    // update saved array's cache
+      const { saved } = cache.readQuery({ query: QUERY_SAVED });
+      cache.writeQuery({
+        query: QUERY_SAVED,
+        data: { saved: [savePark, ...saved] },
+      });
+    }
+  })
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -34,7 +58,15 @@ const SearchForm = () => {
 
   const handleResultsSaved = async (event) => {
     event.preventDefault();
-  
+    
+    try{
+      await savePark({
+        variables: { searchedPark },
+      });
+
+    } catch(e) {
+      console.error(e)
+    }
   }
 
   return (

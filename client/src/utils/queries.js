@@ -21,6 +21,10 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_SAVED = gql`
+  
+`;
+
 
 // Deep Thoughts
 // export const QUERY_THOUGHTS = gql`
