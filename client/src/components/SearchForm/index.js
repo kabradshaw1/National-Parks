@@ -35,6 +35,10 @@ const SearchForm = () => {
     }
   })
 
+  const formSelected = (event) => {
+
+  }
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     if(!searchInput) {
@@ -51,6 +55,7 @@ const SearchForm = () => {
       const items  = await response.json();
       
       console.log(items.data)
+      formSelected(items.data)
       setSearchedPark(items.data);
     } catch (err) {
       console.error(err);
@@ -69,6 +74,8 @@ const SearchForm = () => {
       console.error(e)
     }
   }
+
+
 
   return (
     <>
