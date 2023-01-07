@@ -69,7 +69,7 @@ const SearchForm = () => {
       console.error(e)
     }
   }
-
+  
   return (
     <>
       <div className="card mb-3">
