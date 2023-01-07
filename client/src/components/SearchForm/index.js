@@ -124,7 +124,9 @@ const SearchForm = () => {
           {searchedPark.map((park) =>{
             return(
               <p className="pill mb-3" key={park.id}>
-                {formSelected(park)} 
+                {park.map((properties) => {
+                  `${properties}` 
+                })} 
               </p>
             )
           })}
