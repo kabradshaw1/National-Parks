@@ -37,6 +37,18 @@ const SearchForm = () => {
 
   const formSelected = (event) => {
 
+    for (let i = 0; i < event.length; i++) {
+      const temp = null;
+    }
+
+    return (
+      
+        //Insert logic here for data filtering
+      <>
+        <p className='pill mb-3'>Example 1</p>
+        <p className='pill mb-3'>Example 2</p>
+      </>
+    )
   }
 
   const handleFormSubmit = async (event) => {
