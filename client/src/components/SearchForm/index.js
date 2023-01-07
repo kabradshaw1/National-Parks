@@ -104,10 +104,11 @@ const SearchForm = () => {
         >
           <select className="select pill mb-3" name='searchInput' value={searchInput} onChange={(e) => setSearchInput(e.target.value)}>
                 <option>--Select--</option>
-                <option>activities</option>
-                <option>alerts</option>
-                <option>Hello 3</option>
-                <option>Hello 4</option>           
+                <option>Activities</option>
+                <option>Alerts</option>
+                <option>Ammenities</option>
+                <option>Campgrounds</option>
+                <option>Parks</option>           
             <div className="select_arrow">
             </div>
           </select>
@@ -124,9 +125,7 @@ const SearchForm = () => {
           {searchedPark.map((park) =>{
             return(
               <p className="pill mb-3" key={park.id}>
-                {park.map((properties) => {
-                  `${properties}` 
-                })} 
+                {park.name} 
               </p>
             )
           })}
