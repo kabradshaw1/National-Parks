@@ -25,21 +25,7 @@ const userSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'Saved',
       }
-    ],
-    // I've left in the examples for both projects we've done with mern.
-    // thoughts: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Thought'
-    //   }
-    // ],
-    // friends: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User'
-    //   }
-    // ]
-    // savedBooks: [bookSchema],
+    ]
   },
   {
     toJSON: {
@@ -62,11 +48,6 @@ userSchema.pre('save', async function(next) {
 userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
-
-// This was used in both the book and social apps.
-// userSchema.virtual('bookCount').get(function () {
-//   return this.savedBooks.length;
-// });
 
 const User = model('User', userSchema);
 
