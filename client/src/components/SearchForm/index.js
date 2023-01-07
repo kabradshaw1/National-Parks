@@ -49,9 +49,9 @@ const SearchForm = () => {
       }
       
       const items  = await response.json();
-      const items2 = items.data;
-     
-      setSearchedPark(items2);
+      
+      console.log(items.data)
+      setSearchedPark(items.data);
     } catch (err) {
       console.error(err);
     }
@@ -82,8 +82,8 @@ const SearchForm = () => {
         >
           <select className="select pill mb-3" name='searchInput' value={searchInput} onChange={(e) => setSearchInput(e.target.value)}>
                 <option>--Select--</option>
-                <option>parks</option>
-                <option>Hello 2</option>
+                <option>activities</option>
+                <option>alerts</option>
                 <option>Hello 3</option>
                 <option>Hello 4</option>           
             <div className="select_arrow">
