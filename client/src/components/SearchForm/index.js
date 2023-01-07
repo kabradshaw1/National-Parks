@@ -36,19 +36,22 @@ const SearchForm = () => {
   })
 
   const formSelected = (event) => {
+    //let newArray = event.map((properties) => {
+      //console.log(properties)
+    //}) 
 
-    for (let i = 0; i < event.length; i++) {
-      const temp = null;
+    for (const property in event) {
+      console.log(`${property}: ${event[property]}`);
     }
 
-    return (
+    //return (
       
         //Insert logic here for data filtering
-      <>
-        <p className='pill mb-3'>Example 1</p>
-        <p className='pill mb-3'>Example 2</p>
-      </>
-    )
+      //<>
+        //<p className='pill mb-3'>Example 1</p>
+        //<p className='pill mb-3'>Example 2</p>
+      //</>
+    //)
   }
 
   const handleFormSubmit = async (event) => {
@@ -121,7 +124,7 @@ const SearchForm = () => {
           {searchedPark.map((park) =>{
             return(
               <p className="pill mb-3" key={park.id}>
-                {park.name}
+                {formSelected(park)} 
               </p>
             )
           })}
