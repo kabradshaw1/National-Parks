@@ -37,15 +37,21 @@ const SearchForm = () => {
 
   const SearchResults = (data) => {
     const newValues = data.map((values) => {
-      Object.values(values);
+      Object.values(values).map((value) => {
+        let value1 = value
+        return console.log(value1)
+      });
+      
     });
     const newKeys = data.map((keys) => {
       Object.keys(keys);
+      // console.log(keys)
     })
 
     return (
       <div>
-
+        {newValues}
+        {newKeys}
       </div>
     )
   };
@@ -65,7 +71,7 @@ const SearchForm = () => {
       
       const items  = await response.json();
       
-      console.log(items.data)
+      console.log(items.data);
       setSearchedPark(items.data);
       SearchResults(items.data);
     } catch (err) {
@@ -85,6 +91,8 @@ const SearchForm = () => {
       console.error(e)
     }
   }
+
+
 
   return (
     <>
@@ -115,7 +123,7 @@ const SearchForm = () => {
           <span className="text-light">Results</span>
         </div>
         <div className="card-body">
-          <SearchResults/>
+          {/* <SearchResults/> */}
           {/* {searchedPark.map((park) =>{
             return(
               <p className="pill mb-3" key={park.id}>
