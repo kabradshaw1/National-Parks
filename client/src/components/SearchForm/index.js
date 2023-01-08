@@ -37,10 +37,10 @@ const SearchForm = () => {
 
   const SearchResults = (data) => {
     const newValues = data.map((values) => {
-      Object.values(values).map((value) => {
-        let value1 = value
-        return console.log(value1)
+      const component = Object.values(values).map((value) => {
+        return value
       });
+      return console.log(component)
       
     });
     const newKeys = data.map((keys) => {
