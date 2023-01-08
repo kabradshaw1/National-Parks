@@ -10,6 +10,8 @@ const SearchForm = () => {
   const [searchedPark, setSearchedPark] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
+  
+  const [searchResults, setSearchResults] =useState('');
 
   const [savePark, { error }] = useMutation(SAVE_PARK, {
     update(cache, { data: { savePark } }) {
@@ -59,12 +61,7 @@ const SearchForm = () => {
     //   }
     // }
     
-    return (
-      <div>
-        
-       
-      </div>
-    )
+    return setSearchResults(Keys)
   };
 
   const handleFormSubmit = async (event) => {
@@ -135,11 +132,11 @@ const SearchForm = () => {
         </div>
         <div className="card-body">
           {/* <SearchResults/> */}
-          {searchedPark.map((park) =>{
+          {searchedPark.map((searchResults) =>{
             return(
            
-                <p className="pill mb-3" key={park.id}>
-                {park.descrption},{park.title}
+                <p className="pill mb-3" key={searchResults.id}>
+                {searchResults.descrption},{searchResults.title}
                 </p>
   
             )
