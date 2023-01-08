@@ -132,14 +132,11 @@ const SearchForm = () => {
         </div>
         <div className="card-body">
           {/* <SearchResults/> */}
-          {searchedPark.map((searchResults) =>{
-            return(
-           
-                <p className="pill mb-3" key={searchResults.id}>
-                {searchResults.descrption},{searchResults.title}
-                </p>
-  
-            )
+          {searchedPark.map(() => {
+            searchResults.map((key) => {
+              return key
+            })
+            
           })}
           <p className='pill mb-3'>Stuff we searched for?</p>
           <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
