@@ -36,22 +36,23 @@ const SearchForm = () => {
   })
 
   const SearchResults = (data) => {
-    const newValues = data.map((values) => {
-      const component = Object.values(values).map((value) => {
-        return value
-      });
-      return console.log(component)
-      
-    });
+    // const newValues = data.map((values) => {
+    //   let componentContent = []
+    //   Object.values(values).map((value) => {
+        
+    //   });
+    //   return 
+    // });
     const newKeys = data.map((keys) => {
-      Object.keys(keys);
-      // console.log(keys)
+      Object.keys(keys).map((key) => {
+        console.log(key)
+      });
     })
 
     return (
       <div>
-        {newValues}
-        {newKeys}
+    
+       
       </div>
     )
   };
