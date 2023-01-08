@@ -48,10 +48,14 @@ const SearchForm = () => {
     //     console.log(key)
     //   });
     // })
-    // const Keys = Object.keys(data[0])
+    const Keys = Object.keys(data[0]).map((key)=>{
+      return `{data.${key}}`
+    })
+
+    console.log(Keys)
     // const Components = () => {
     //   for (let i = 0; i < Keys.length; i++) {
-    //     {data.Keys[i]}
+    //     return `{${data.Keys[i]}}`
     //   }
     // }
     
