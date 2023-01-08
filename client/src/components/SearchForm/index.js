@@ -43,15 +43,21 @@ const SearchForm = () => {
     //   });
     //   return 
     // });
-    const newKeys = data.map((keys) => {
-      Object.keys(keys).map((key) => {
-        console.log(key)
-      });
-    })
-
+    // const newKeys = data.map((keys) => {
+    //   Object.keys(keys).map((key) => {
+    //     console.log(key)
+    //   });
+    // })
+    const Keys = Object.keys(data[0])
+    const Components = () => {
+      for (let i = 0; i < Keys.length; i++) {
+        {data.Keys[i]}
+      }
+    }
+    
     return (
       <div>
-    
+        <Components/>
        
       </div>
     )
@@ -125,13 +131,18 @@ const SearchForm = () => {
         </div>
         <div className="card-body">
           {/* <SearchResults/> */}
-          {/* {searchedPark.map((park) =>{
+          {searchedPark.map((park) =>{
             return(
-              <p className="pill mb-3" key={park.id}>
-              {park.name}
-              </p>
+              <>
+                <p className="pill mb-3" key={park.id}>
+                {park.name}
+                </p>
+                <p className="pill mb-3" key={park.id}>
+                {park.name}
+                </p>
+                </>
             )
-          })} */}
+          })}
           <p className='pill mb-3'>Stuff we searched for?</p>
           <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
             Save Results
