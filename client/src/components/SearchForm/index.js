@@ -48,16 +48,16 @@ const SearchForm = () => {
     //     console.log(key)
     //   });
     // })
-    const Keys = Object.keys(data[0])
-    const Components = () => {
-      for (let i = 0; i < Keys.length; i++) {
-        {data.Keys[i]}
-      }
-    }
+    // const Keys = Object.keys(data[0])
+    // const Components = () => {
+    //   for (let i = 0; i < Keys.length; i++) {
+    //     {data.Keys[i]}
+    //   }
+    // }
     
     return (
       <div>
-        <Components/>
+        
        
       </div>
     )
@@ -133,14 +133,11 @@ const SearchForm = () => {
           {/* <SearchResults/> */}
           {searchedPark.map((park) =>{
             return(
-              <>
+           
                 <p className="pill mb-3" key={park.id}>
-                {park.name}
+                {park.descrption},{park.title}
                 </p>
-                <p className="pill mb-3" key={park.id}>
-                {park.name}
-                </p>
-                </>
+  
             )
           })}
           <p className='pill mb-3'>Stuff we searched for?</p>
