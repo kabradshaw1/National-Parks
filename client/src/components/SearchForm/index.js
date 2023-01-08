@@ -35,6 +35,21 @@ const SearchForm = () => {
     }
   })
 
+  const SearchResults = (data) => {
+    const newValues = data.map((values) => {
+      Object.values(values);
+    });
+    const newKeys = data.map((keys) => {
+      Object.keys(keys);
+    })
+
+    return (
+      <div>
+
+      </div>
+    )
+  };
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     if(!searchInput) {
@@ -52,6 +67,7 @@ const SearchForm = () => {
       
       console.log(items.data)
       setSearchedPark(items.data);
+      SearchResults(items.data);
     } catch (err) {
       console.error(err);
     }
@@ -69,7 +85,7 @@ const SearchForm = () => {
       console.error(e)
     }
   }
-  
+
   return (
     <>
       <div className="card mb-3">
@@ -99,13 +115,14 @@ const SearchForm = () => {
           <span className="text-light">Results</span>
         </div>
         <div className="card-body">
-          {searchedPark.map((park) =>{
+          <SearchResults/>
+          {/* {searchedPark.map((park) =>{
             return(
               <p className="pill mb-3" key={park.id}>
-                {park.name}
+              {park.name}
               </p>
             )
-          })}
+          })} */}
           <p className='pill mb-3'>Stuff we searched for?</p>
           <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
             Save Results
