@@ -66,7 +66,7 @@ const SearchForm = () => {
       
       console.log(items.data);
       setSearchedPark(items.data);
-      SearchResults(items.data);
+      // SearchResults(items.data);
     } catch (err) {
       console.error(err);
     }
@@ -116,8 +116,9 @@ const SearchForm = () => {
         <div className="card-body"> 
           {searchedPark.map((data) => {
             return(
-              // <Results/>
-              <p>{data.name}</p>
+              Object.keys(data[0]).map((key)=>{
+                return `<p>{${data}.${key}}</p>`
+              }).join('')
             )
           })}       
           <p className='pill mb-3'>Stuff we searched for?</p>
