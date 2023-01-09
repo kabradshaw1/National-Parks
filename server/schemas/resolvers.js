@@ -25,6 +25,10 @@ const resolvers = {
         .select('-__v -password')
         .populate('saved')
     },
+    all_saved: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Thought.find(params).sort({ createdAt: -1 });
+    },
     saved: async (parent, { _id }) => {
       return Saved.findOne({ _id });
     },
@@ -69,7 +73,6 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
   }
-
 };
 
 module.exports = resolvers;
