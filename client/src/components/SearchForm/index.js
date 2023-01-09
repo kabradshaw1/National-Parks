@@ -114,9 +114,10 @@ const SearchForm = () => {
           <span className="text-light">Results</span>
         </div>
         <div className="card-body"> 
-          {searchedPark.map((key) => {
+          {searchedPark.map((data) => {
             return(
-              <Results/>
+              // <Results/>
+              <p>{data.name}</p>
             )
           })}       
           <p className='pill mb-3'>Stuff we searched for?</p>
