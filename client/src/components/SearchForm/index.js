@@ -38,29 +38,13 @@ const SearchForm = () => {
   })
 
   const SearchResults = (data) => {
-    // const newValues = data.map((values) => {
-    //   let componentContent = []
-    //   Object.values(values).map((value) => {
-        
-    //   });
-    //   return 
-    // });
-    // const newKeys = data.map((keys) => {
-    //   Object.keys(keys).map((key) => {
-    //     console.log(key)
-    //   });
-    // })
+
     const Keys = Object.keys(data[0]).map((key)=>{
-      return `{data.${key}}`
+      return `<p>{data.${key}}</p>`
     })
 
     console.log(Keys)
-    // const Components = () => {
-    //   for (let i = 0; i < Keys.length; i++) {
-    //     return `{${data.Keys[i]}}`
-    //   }
-    // }
-    
+ 
     return setSearchResults(Keys)
   };
 
