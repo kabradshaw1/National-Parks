@@ -100,8 +100,6 @@ const SearchForm = () => {
     }
   }
 
-
-
   return (
     <>
       <div className="card mb-3">
