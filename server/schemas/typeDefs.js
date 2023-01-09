@@ -24,6 +24,7 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
+    all_saves(username: String): [Saved]
     saved(id: ID!): Saved
   }
 
