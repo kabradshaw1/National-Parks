@@ -11,7 +11,7 @@ const SearchForm = () => {
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
   
-  const [searchResults, setSearchResults] =useState('');
+  const [Results, setResults] =useState('');
 
   const [savePark, { error }] = useMutation(SAVE_PARK, {
     update(cache, { data: { savePark } }) {
@@ -29,7 +29,7 @@ const SearchForm = () => {
 
     // update saved array's cache
       const { saved } = cache.readQuery({ query: QUERY_SAVED });
-      console.log(saved);
+  
       cache.writeQuery({
         query: QUERY_SAVED,
         data: { saved: [savePark, ...saved] },
@@ -38,38 +38,23 @@ const SearchForm = () => {
   })
 
   const SearchResults = (data) => {
-    // const newValues = data.map((values) => {
-    //   let componentContent = []
-    //   Object.values(values).map((value) => {
-        
-    //   });
-    //   return 
-    // });
-    // const newKeys = data.map((keys) => {
-    //   Object.keys(keys).map((key) => {
-    //     console.log(key)
-    //   });
-    // })
-    const Keys = Object.keys(data[0]).map((key)=>{
-      return `{data.${key}}`
-    })
 
+    const Keys = Object.keys(data[0]).map((key)=>{
+      return `<p>{data.${key}}</p>`
+    }).join('')
+   
     console.log(Keys)
-    // const Components = () => {
-    //   for (let i = 0; i < Keys.length; i++) {
-    //     return `{${data.Keys[i]}}`
-    //   }
-    // }
-    
-    return setSearchResults(Keys)
+ 
+    return setResults(Keys)
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
     if(!searchInput) {
       return false
     };
-
+    
     try {
       const response = await searchPark(searchInput);
    
@@ -91,9 +76,9 @@ const SearchForm = () => {
     event.preventDefault();
     
     try {
-      await savePark({
-        variables: { searchedPark },
-      });
+      // await savePark({
+      //   variables: { searchedPark },
+      // });
 
     } catch(e) {
       console.error(e)
@@ -128,14 +113,13 @@ const SearchForm = () => {
         <div className="card-header">
           <span className="text-light">Results</span>
         </div>
-        <div className="card-body">
-          {/* <SearchResults/> */}
-          {searchedPark.map(() => {
-            searchResults.map((key) => {
-              return key
-            })
-            
-          })}
+        <div className="card-body"> 
+          {searchedPark.map((data) => {
+            return(
+              // <Results/>
+              <p>{data.name}</p>
+            )
+          })}       
           <p className='pill mb-3'>Stuff we searched for?</p>
           <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
             Save Results
