@@ -10,51 +10,33 @@ const SearchForm = () => {
   const [searchedPark, setSearchedPark] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
+  
+  const [searchResults, setSearchResults] =useState('');
 
-  const [savePark, { error }] = useMutation(SAVE_PARK
-  //   , {
-  //   update(cache, { data: { savePark } }) {
-  //       // could potentially not exist yet, so wrap in a try/catch
-  //     try {
-  //       // update me array's cache
-  //       const { me } = cache.readQuery({ query: QUERY_ME });
-  //       cache.writeQuery({
-  //         query: QUERY_ME,
-  //         data: { me: { ...me, saved: [...me.saved, savePark] } },
-  //       });
-  //     } catch (e) {
-  //       console.warn("First park insertion by user!")
-  //     }
+  const [savePark, { error }] = useMutation(SAVE_PARK, {
+    update(cache, { data: { savePark } }) {
+        // could potentially not exist yet, so wrap in a try/catch
+      try {
+        // update me array's cache
+        const { me } = cache.readQuery({ query: QUERY_ME });
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: { ...me, saved: [...me.saved, savePark] } },
+        });
+      } catch (e) {
+        console.warn("First park insertion by user!")
+      }
 
-  //   // update saved array's cache
-  //     const { saved } = cache.readQuery({ query: QUERY_SAVED });
-  //     console.log(saved);
-  //     cache.writeQuery({
-  //       query: QUERY_SAVED,
-  //       data: { saved: [savePark, ...saved] },
-  //     });
-  //   }
-  // }
-  )
-
-  const formSelected = (event) => {
-    //let newArray = event.map((properties) => {
-      //console.log(properties)
-    //}) 
-
-    for (const property in event) {
-      console.log(`${property}: ${event[property]}`);
+    // update saved array's cache
+      const { saved } = cache.readQuery({ query: QUERY_SAVED });
+      console.log(saved);
+      cache.writeQuery({
+        query: QUERY_SAVED,
+        data: { saved: [savePark, ...saved] },
+      });
     }
+  })
 
-    //return (
-      
-        //Insert logic here for data filtering
-      //<>
-        //<p className='pill mb-3'>Example 1</p>
-        //<p className='pill mb-3'>Example 2</p>
-      //</>
-    //)
-  }
   const SearchResults = (data) => {
     // const newValues = data.map((values) => {
     //   let componentContent = []
@@ -99,6 +81,7 @@ const SearchForm = () => {
       
       console.log(items.data);
       setSearchedPark(items.data);
+      SearchResults(items.data);
     } catch (err) {
       console.error(err);
     }
@@ -129,11 +112,10 @@ const SearchForm = () => {
         >
           <select className="select pill mb-3" name='searchInput' value={searchInput} onChange={(e) => setSearchInput(e.target.value)}>
                 <option>--Select--</option>
-                <option>Activities</option>
-                <option>Alerts</option>
-                <option>Ammenities</option>
-                <option>Campgrounds</option>
-                <option>Parks</option>           
+                <option>activities</option>
+                <option>alerts</option>
+                <option>Hello 3</option>
+                <option>Hello 4</option>           
             <div className="select_arrow">
             </div>
           </select>
@@ -147,12 +129,6 @@ const SearchForm = () => {
           <span className="text-light">Results</span>
         </div>
         <div className="card-body">
-          {searchedPark.map((park) =>{
-            return(
-              <p className="pill mb-3" key={park.id}>
-                {park.name} 
-              </p>
-            )
           {/* <SearchResults/> */}
           {searchedPark.map(() => {
             searchResults.map((key) => {
