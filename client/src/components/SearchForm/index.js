@@ -29,7 +29,7 @@ const SearchForm = () => {
 
     // update saved array's cache
       const { saved } = cache.readQuery({ query: QUERY_SAVED });
-      console.log(saved);
+  
       cache.writeQuery({
         query: QUERY_SAVED,
         data: { saved: [savePark, ...saved] },
@@ -41,8 +41,8 @@ const SearchForm = () => {
 
     const Keys = Object.keys(data[0]).map((key)=>{
       return `<p>{data.${key}}</p>`
-    })
-
+    }).toString()
+   
     console.log(Keys)
  
     return setSearchResults(Keys)
@@ -50,10 +50,11 @@ const SearchForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
     if(!searchInput) {
       return false
     };
-
+    
     try {
       const response = await searchPark(searchInput);
    
@@ -75,9 +76,9 @@ const SearchForm = () => {
     event.preventDefault();
     
     try {
-      await savePark({
-        variables: { searchedPark },
-      });
+      // await savePark({
+      //   variables: { searchedPark },
+      // });
 
     } catch(e) {
       console.error(e)
@@ -112,14 +113,7 @@ const SearchForm = () => {
         <div className="card-header">
           <span className="text-light">Results</span>
         </div>
-        <div className="card-body">
-          {/* <SearchResults/> */}
-          {searchedPark.map(() => {
-            searchResults.map((key) => {
-              return key
-            })
-            
-          })}
+        <div className="card-body">        
           <p className='pill mb-3'>Stuff we searched for?</p>
           <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
             Save Results
