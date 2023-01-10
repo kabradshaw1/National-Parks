@@ -11,7 +11,7 @@ const SearchForm = () => {
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
   
-  // const [Results, setResults] =useState('');
+  const [Results, setResults] =useState('');
 
   const [savePark, { error }] = useMutation(SAVE_PARK, {
     update(cache, { data: { savePark } }) {
@@ -37,16 +37,14 @@ const SearchForm = () => {
     }
   })
 
-  // const SearchResults = (data) => {
-
-  //   const Keys = Object.keys(data[0]).map((key)=>{
-  //     return `<p>{data.${key}}</p>`
-  //   }).join('')
-   
-  //   console.log(Keys)
- 
-  //   return setResults(Keys)
-  // };
+  const SearchResults = ({data}) => {
+    console.log(data);
+    const Keys = data && Object.entries(data).map(([key, value])=>{
+      return <p>{key}:{value}</p>
+    })
+    
+    return Keys
+  };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -66,7 +64,7 @@ const SearchForm = () => {
       
       console.log(items.data);
       setSearchedPark(items.data);
-      // SearchResults(items.data);
+      SearchResults(items.data);
     } catch (err) {
       console.error(err);
     }
@@ -114,15 +112,10 @@ const SearchForm = () => {
           <span className="text-light">Results</span>
         </div>
         <div className="card-body"> 
-          {searchedPark.map((data) => {
-            return(
-              // <Results/>
-              <p className='pill mb-3'>{data.name}</p>
-              // Object.keys(searchedPark[0]).map((key)=>{
-              //   return `<p className='pill mb-3>{${data}.${key}}</p>`
-              // }).join('')
+          {searchedPark.map((data) => (
+             <SearchResults data={data}/>
             )
-          })}       
+          )}       
           <p className='pill mb-3'>Stuff we searched for</p>
           <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
             Save Results
