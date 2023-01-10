@@ -7,7 +7,7 @@ import { QUERY_SAVED, QUERY_ME } from '../../utils/queries'
 
 const SearchForm = () => {
   // create state for holding returned google api data
-  const [searchedPark, setSearchedPark] = useState([]);
+  const [searched, setSearched] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
   
@@ -35,7 +35,7 @@ const SearchForm = () => {
     }
   });
 
-  const resultsComponent = ({data}) => {
+  const Results = ({data}) => {
     const component = data && Object.entries(data).map(([key, value])=>
       (
           <p className='pill mb-3'>{key}:{value}</p>
@@ -60,8 +60,8 @@ const SearchForm = () => {
       
       const items  = await response.json();
       
-      setSearchedPark(items.data);
-      resultsComponent(items.data);
+      setSearched(items.data);
+      Results(items.data);
     } catch (err) {
       console.error(err);
     }
@@ -109,8 +109,8 @@ const SearchForm = () => {
           <span className="text-light">Results</span>
         </div>
         <div className="card-body"> 
-          {searchedPark.map((data) => (
-             <SearchResults data={data}/>
+          {searched.map((data) => (
+             <Results data={data}/>
             )
           )}       
           <p className='pill mb-3'>Stuff we searched for</p>
