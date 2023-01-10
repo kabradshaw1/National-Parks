@@ -13,7 +13,7 @@ const typeDefs = gql`
     user: User
   }
   
-  type Save {
+  type Saved {
     _id: ID
     name: String
     createdAt: String
@@ -24,14 +24,14 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    all_saves(username: String): [Saved]
+    all_saved(username: String): [Saved]
     saved(id: ID!): Saved
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    savePark(name: String!): Save
+    savePark(name: String!): Saved
   }
 `;
 
