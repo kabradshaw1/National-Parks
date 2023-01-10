@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_SAVED } from '../utils/queries';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_SAVED);
+  const { data } = useQuery(QUERY_SAVED);
 
   const saved = data?.all_saved || [];
 
