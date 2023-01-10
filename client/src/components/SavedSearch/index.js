@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const SavedSearch = ({ all_saved, title }) => {
-  if (!all_saved.length) {
-    return <h3>No saved Yet</h3>;
+const SavedSearch = ({ saved, title }) => {
+  if (!saved.length) {
+    return <h3>Nothing Saved Yet</h3>;
   }
   
   return (

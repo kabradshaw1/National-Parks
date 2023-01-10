@@ -4,52 +4,31 @@ import SavedSearch from '../components/SavedSearch';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_SAVED, QUERY_ME } from '../utils/queries';
+import { QUERY_SAVED } from '../utils/queries';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_SAVED);
-  const { data: userData } = useQuery(QUERY_ME);
-  console.log(data)
 
-  // const loggedIn = Auth.loggedIn();
-  // useEffect(()=>{
-  //   searchPark().then((res)=>{return res.json()}).then(data => {
-  //     console.log(data)
-  //   }) 
-  // }, [searchPark])
+  const saved = data?.all_saved || [];
+
+  const loggedIn = Auth.loggedIn();
+
   return (
     <main>
-      <SearchForm/>
-      {/* <SavedSearch/> */}
+      <div className="flex-row justify-space-between">
+        <div className="col-12 mb-3">
+          <SearchForm/>
+        </div>
+      </div>
+      {loggedIn ? (
+        <div>
+          <SavedSearch 
+            saved={saved}
+            title='stuff and things'
+          />
+        </div>
+      ): null}
     </main>
-    // <main>
-    //   <div className="flex-row justify-space-between">
-    //     {loggedIn && (
-    //       <div className="col-12 mb-3">
-    //         <ThoughtForm />
-    //       </div>
-    //     )}
-    //     <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
-    //       {loading ? (
-    //         <div>Loading...</div>
-    //       ) : (
-    //         <ThoughtList
-    //           thoughts={thoughts}
-    //           title="Some Feed for Thought(s)..."
-    //         />
-    //       )}
-    //     </div>
-    //     {loggedIn && userData ? (
-    //       <div className="col-12 col-lg-3 mb-3">
-    //         <FriendList
-    //           username={userData.me.username}
-    //           friendCount={userData.me.friendCount}
-    //           friends={userData.me.friends}
-    //         />
-    //       </div>
-    //     ) : null}
-    //   </div>
-    // </main>
   );
 };
 
