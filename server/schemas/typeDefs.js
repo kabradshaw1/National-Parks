@@ -15,7 +15,7 @@ const typeDefs = gql`
   
   type Saved {
     _id: ID
-    name: String
+    searched: String
     createdAt: String
     username: String
   }
@@ -25,13 +25,13 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     all_saved(username: String): [Saved]
-    saved(id: ID!): Saved
+    saved(_id: ID!): Saved
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    savePark(name: String!): Saved
+    saveSearch(name: String!): Saved
   }
 `;
 

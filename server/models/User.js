@@ -3,9 +3,6 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
   {
-    searchedPark: {
-      type: JSON,
-    },
     username: {
       type: String,
       required: true,

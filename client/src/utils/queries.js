@@ -1,10 +1,20 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_SAVED = gql`
-  query saved($username: String) {
-    saved(username: $username) {
+export const QUERY_ALL_SAVED = gql`
+  query all_saved($username: String) {
+    all_saved(username: $username) {
       _id
-      name
+      searched
+      createdAt
+      username
+    }
+  }
+`;
+export const QUERY_SAVED = gql`
+  query saved($id: ID!) {
+    saved(_id: $id) {
+      _id
+      searched
       username
       createdAt
     }
@@ -19,7 +29,7 @@ export const QUERY_USER = gql`
       email
       saved {
         _id
-        name
+        searched
       }
     }
   }
@@ -33,12 +43,9 @@ export const QUERY_ME = gql`
       email
       saved {
         _id
-        name
+        searched
       }
     }
   }
 `;
-
-
-
 

@@ -24,9 +24,9 @@ export const ADD_USER = gql`
   }
 `;
 
-export const SAVE_PARK = gql`
-  mutation savePark($searchedPark: String!) {
-    savePark(searchedPark: $searchedPark) {
+export const SAVE_SEARCH = gql`
+  mutation saveSearch($searched: String!) {
+    saveSearch(searched: $searched) {
       _id
       username
       email
