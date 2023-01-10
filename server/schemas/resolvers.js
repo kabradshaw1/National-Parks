@@ -27,7 +27,7 @@ const resolvers = {
     },
     all_saved: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
+      return Saved.find(params).sort({ createdAt: -1 });
     },
     saved: async (parent, { _id }) => {
       return Saved.findOne({ _id });
@@ -57,7 +57,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    savePark: async (parent, args, context) => {
+    saveSearch: async (parent, args, context) => {
       if (context.user) {
         const saved = await Saved.create({ ...args, username: context.user.username });
 

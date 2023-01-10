@@ -35,17 +35,13 @@ const SearchForm = () => {
     }
   });
 
-  const SearchResults = ({data}) => {
-    const Keys = data && Object.entries(data).map(([key, value])=>{
-      return (
-        <div className='flex'>
+  const resultsComponent = ({data}) => {
+    const component = data && Object.entries(data).map(([key, value])=>
+      (
           <p className='pill mb-3'>{key}:{value}</p>
-        </div>
       )
-    })
-
-    // <p>{key}:{value}</p>
-    return Keys
+    )
+    return component
   };
 
   const handleFormSubmit = async (event) => {
@@ -65,7 +61,7 @@ const SearchForm = () => {
       const items  = await response.json();
       
       setSearchedPark(items.data);
-      SearchResults(items.data);
+      resultsComponent(items.data);
     } catch (err) {
       console.error(err);
     }
@@ -75,9 +71,9 @@ const SearchForm = () => {
     event.preventDefault();
     
     try {
-      // await savePark({
-      //   variables: { searchedPark },
-      // });
+      await saveSearch({
+        variables: { searched },
+      });
 
     } catch(e) {
       console.error(e)
