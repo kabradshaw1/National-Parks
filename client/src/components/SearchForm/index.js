@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
-import { SAVE_PARK } from '../../utils/mutations';
+import { SAVE_SEARCH } from '../../utils/mutations';
 import { searchPark } from '../../utils/API';
 import { QUERY_SAVED, QUERY_ME } from '../../utils/queries'
 
@@ -11,15 +11,15 @@ const SearchForm = () => {
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
   
-  const [savePark, { error }] = useMutation(SAVE_PARK, {
-    update(cache, { data: { savePark } }) {
+  const [saveSearch, { error }] = useMutation(SAVE_SEARCH,{
+    update(cache, { data: { saveSearch } }) {
         // could potentially not exist yet, so wrap in a try/catch
       try {
         // update me array's cache
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { me: { ...me, saved: [...me.saved, savePark] } },
+          data: { me: { ...me, saved: [...me.saved, saveSearch] } },
         });
       } catch (e) {
         console.warn("First park insertion by user!")
@@ -30,10 +30,10 @@ const SearchForm = () => {
   
       cache.writeQuery({
         query: QUERY_SAVED,
-        data: { saved: [savePark, ...saved] },
+        data: { saved: [saveSearch, ...saved] },
       });
     }
-  })
+  });
 
   const SearchResults = ({data}) => {
     const Keys = data && Object.entries(data).map(([key, value])=>{
@@ -128,3 +128,4 @@ const SearchForm = () => {
 }
 
 export default SearchForm;
+

@@ -3,12 +3,7 @@ const dateFormat = require('../utils/dateFormat');
 
 const savedSchema = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    name: {
+    searched: {
       type: String,
       required: true,
     },
