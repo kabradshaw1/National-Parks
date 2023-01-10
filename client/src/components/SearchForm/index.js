@@ -11,7 +11,7 @@ const SearchForm = () => {
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
   
-  const [Results, setResults] =useState('');
+  const [searchResults, setSearchResults] =useState('');
 
   const [savePark, { error }] = useMutation(SAVE_PARK, {
     update(cache, { data: { savePark } }) {
@@ -29,7 +29,7 @@ const SearchForm = () => {
 
     // update saved array's cache
       const { saved } = cache.readQuery({ query: QUERY_SAVED });
-  
+      console.log(saved);
       cache.writeQuery({
         query: QUERY_SAVED,
         data: { saved: [savePark, ...saved] },
@@ -48,11 +48,10 @@ const SearchForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     if(!searchInput) {
       return false
     };
-    
+
     try {
       const response = await searchPark(searchInput);
    
@@ -74,9 +73,9 @@ const SearchForm = () => {
     event.preventDefault();
     
     try {
-      // await savePark({
-      //   variables: { searchedPark },
-      // });
+      await savePark({
+        variables: { searchedPark },
+      });
 
     } catch(e) {
       console.error(e)
@@ -112,11 +111,13 @@ const SearchForm = () => {
           <span className="text-light">Results</span>
         </div>
         <div className="card-body"> 
-          {searchedPark.map((data) => (
-             <SearchResults data={data}/>
+          {searchedPark.map((data) => {
+            return(
+              // <Results/>
+              <p>{data.name}</p>
             )
-          )}       
-          <p className='pill mb-3'>Stuff we searched for</p>
+          })}       
+          <p className='pill mb-3'>Stuff we searched for?</p>
           <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
             Save Results
           </button>
