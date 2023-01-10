@@ -136,7 +136,7 @@ const SearchForm = () => {
             })
             
           })}
-          <p className='pill mb-3'>Stuff we searched for?</p>
+          <p className='pill-2 mb-3'>Stuff we searched for?</p>
           <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
             Save Results
           </button>
