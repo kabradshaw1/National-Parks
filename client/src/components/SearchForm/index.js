@@ -39,11 +39,11 @@ const SearchForm = () => {
     const Keys = data && Object.entries(data).map(([key, value])=>{
       return (
         <div className='flex'>
-          <p className='pill mb-3'>{key}</p>
-          <p className='pill mb-3'>{value}</p>
+          <p className='pill mb-3'>{key}:{value}</p>
         </div>
       )
     })
+
     // <p>{key}:{value}</p>
     return Keys
   };
