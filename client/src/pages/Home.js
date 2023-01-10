@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
-
+import React from 'react';
 import SearchForm from '../components/SearchForm';
 import SavedSearch from '../components/SavedSearch';
+
 import Auth from '../utils/auth';
+import { useQuery } from '@apollo/client';
+import { QUERY_SAVED, QUERY_ME } from '../utils/queries';
 
 const Home = () => {
-  // const { data: userData } = useQuery(QUERY_ME_BASIC);
+  const { loading, data } = useQuery(QUERY_SAVED);
+  const { data: userData } = useQuery(QUERY_ME);
+  console.log(data)
 
   // const loggedIn = Auth.loggedIn();
   // useEffect(()=>{
@@ -16,7 +20,7 @@ const Home = () => {
   return (
     <main>
       <SearchForm/>
-      <SavedSearch/>
+      {/* <SavedSearch/> */}
     </main>
     // <main>
     //   <div className="flex-row justify-space-between">

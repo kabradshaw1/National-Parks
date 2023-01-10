@@ -1,49 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { getMe } from '../../utils/API';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import Auth from '../../utils/auth';
-
-const SavedSearch = () => {
-
-  const [userData, setUserData] = useState({})
-
-  const userDataLength = Object.keys(userData).length;
-
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-        if (!token) {
-          return false;
-        }
-
-        const response = await getMe(token);
-
-        if (!response.ok) {
-          throw new Error('something went wrong!');
-        }
-
-        const user = await response.json();
-        setUserData(user);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    getUserData();
-  }, [userDataLength]);
-
-  if(!userDataLength) {
-    return <h2>LOADING...</h2>;
+const SavedSearch = ({ all_saved, title }) => {
+  if (!all_saved.length) {
+    return <h3>No saved Yet</h3>;
   }
-
+  
   return (
-    <h2>
-      {userData.saveds.length
-            ? `Viewing ${userData.saved.length} saved ${userData.saved.length === 1 ? 'book' : 'books'}:`
-            : 'You have no saved books!'}
-    </h2>
+    <div>
+      {/* <h3>{title}</h3>
+      {saved &&
+        saved.map(saved)
+      } */}
+    </div>
   )
 }
 
