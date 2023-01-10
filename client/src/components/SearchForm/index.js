@@ -11,8 +11,6 @@ const SearchForm = () => {
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
   
-  const [Results, setResults] =useState('');
-
   const [savePark, { error }] = useMutation(SAVE_PARK, {
     update(cache, { data: { savePark } }) {
         // could potentially not exist yet, so wrap in a try/catch
@@ -38,7 +36,6 @@ const SearchForm = () => {
   })
 
   const SearchResults = ({data}) => {
-    console.log(data);
     const Keys = data && Object.entries(data).map(([key, value])=>{
       return <p>{key}:{value}</p>
     })
@@ -62,7 +59,6 @@ const SearchForm = () => {
       
       const items  = await response.json();
       
-      console.log(items.data);
       setSearchedPark(items.data);
       SearchResults(items.data);
     } catch (err) {
