@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getMe } from '../../utils/API';
 
-import { getMe, deleteBook } from '../utils/API';
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 const SavedSearch = () => {
 
@@ -13,7 +12,7 @@ const SavedSearch = () => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const loken = Auth.oggedIn() ? Auth.getToken() : null;
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
           return false;
@@ -21,11 +20,11 @@ const SavedSearch = () => {
 
         const response = await getMe(token);
 
-        if(!response.ok) {
-          throw new Error('something went wrong!')
+        if (!response.ok) {
+          throw new Error('something went wrong!');
         }
 
-        const user = await response.json()
+        const user = await response.json();
         setUserData(user);
       } catch (err) {
         console.error(err);
