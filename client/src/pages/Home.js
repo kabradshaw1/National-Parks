@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 
 import SearchForm from '../components/SearchForm';
-// import Auth from '../utils/auth';
+import SavedSearch from '../components/SavedSearch';
+import Auth from '../utils/auth';
 
 const Home = () => {
   // const { data: userData } = useQuery(QUERY_ME_BASIC);
@@ -15,6 +16,7 @@ const Home = () => {
   return (
     <main>
       <SearchForm/>
+      <SavedSearch/>
     </main>
     // <main>
     //   <div className="flex-row justify-space-between">

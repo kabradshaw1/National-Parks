@@ -72,7 +72,7 @@ const SearchForm = () => {
     
     try {
       await saveSearch({
-        variables: { searched },
+        variables: { searchInput },
       });
 
     } catch(e) {
