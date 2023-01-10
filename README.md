@@ -59,10 +59,10 @@ npm run develop
 
 
 ## Authors
-Kyle Bradshaw (https://github.com/kabradshaw1)
-Ashley Mullikin (https://github.com/ashleymullikin)
-Gus Lascola (https://github.com/August-Lascola)
-Aaron Frialde (https://github.com/annoyingdroid)
-Edward Beard (https://github.com/erbeard)
-Landen Blankinship (https://github.com/landank)
+- Kyle Bradshaw (https://github.com/kabradshaw1)
+- Ashley Mullikin (https://github.com/ashleymullikin)
+- Gus Lascola (https://github.com/August-Lascola)
+- Aaron Frialde (https://github.com/annoyingdroid)
+- Edward Beard (https://github.com/erbeard)
+- Landen Blankinship (https://github.com/landank)
 
