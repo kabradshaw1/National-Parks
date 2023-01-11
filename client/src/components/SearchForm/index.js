@@ -69,7 +69,7 @@ const SearchForm = () => {
   
   const handleResultsSaved = async (event) => {
     event.preventDefault();
-    
+    console.log(searchInput);
     try {
       await saveSearch({
         variables: { searchInput },
