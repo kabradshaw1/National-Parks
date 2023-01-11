@@ -99,9 +99,15 @@ const SearchForm = () => {
             <div className="select_arrow">
             </div>
           </select>
+          <div>
             <button className="btn col-12 col-md-3" type="submit">
-              Submit
+                Submit
             </button>
+            <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
+              Save Results
+            </button>
+          </div>
+            
         </form>
       </div>
       <div className="card mb-3">
@@ -114,9 +120,7 @@ const SearchForm = () => {
             )
           )}       
           <p className='pill mb-3'>Stuff we searched for</p>
-          <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
-            Save Results
-          </button>
+          
         </div>
       </div>
     </>
