@@ -3,7 +3,7 @@ const dateFormat = require('../utils/dateFormat');
 
 const savedSchema = new Schema(
   {
-    searched: {
+    searchInput: {
       type: String,
       required: true,
     },

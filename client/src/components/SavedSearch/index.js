@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SavedSearch = ({ saved, title }) => {
-  console.log(saved)
+  // console.log(saved)
   if (!saved.length) {
     return <h3>Nothing Saved Yet</h3>;
   }

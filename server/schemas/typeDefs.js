@@ -15,7 +15,7 @@ const typeDefs = gql`
   
   type Saved {
     _id: ID
-    searched: String
+    searchInput: String
     createdAt: String
     username: String
   }

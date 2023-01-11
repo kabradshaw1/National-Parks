@@ -25,7 +25,7 @@ const SearchForm = () => {
         console.warn("First park insertion by user!")
       }
 
-    // update saved array's cache
+      // update saved array's cache
       const { saved } = cache.readQuery({ query: QUERY_SAVED });
   
       cache.writeQuery({
