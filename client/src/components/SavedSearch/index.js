@@ -7,6 +7,7 @@ const SavedSearch = ({ saved, title }) => {
   
   return (
     <div>
+      {title}
       {/* <h3>{title}</h3>
       {saved &&
         saved.map(saved)
