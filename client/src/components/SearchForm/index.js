@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { SAVE_SEARCH } from '../../utils/mutations';
 import { searchPark } from '../../utils/API';
-import { QUERY_SAVED, QUERY_ME } from '../../utils/queries'
+import { QUERY_ALL_SAVED, QUERY_ME } from '../../utils/queries'
 
 const SearchForm = () => {
   // create state for holding returned google api data
@@ -11,7 +11,7 @@ const SearchForm = () => {
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
   
-  const [saveSearch, { error }] = useMutation(SAVE_SEARCH,{
+  const [saveSearch, { error }] = useMutation(SAVE_SEARCH, {
     update(cache, { data: { saveSearch } }) {
         // could potentially not exist yet, so wrap in a try/catch
       try {
@@ -19,18 +19,18 @@ const SearchForm = () => {
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { me: { ...me, saved: [...me.saved, saveSearch] } },
+          data: { me: { ...me, all_saved: [...me.all_saved, saveSearch] } },
         });
       } catch (e) {
-        console.warn("First park insertion by user!")
+        console.warn("First search insertion by user!")
       }
 
       // update saved array's cache
-      const { saved } = cache.readQuery({ query: QUERY_SAVED });
+      const { all_saved } = cache.readQuery({ query: QUERY_ALL_SAVED });
   
       cache.writeQuery({
-        query: QUERY_SAVED,
-        data: { saved: [saveSearch, ...saved] },
+        query: QUERY_ALL_SAVED,
+        data: { all_saved: [saveSearch, ...all_saved] },
       });
     }
   });
@@ -94,10 +94,9 @@ const SearchForm = () => {
                 <option>--Select--</option>
                 <option>Activities</option>
                 <option>Alerts</option>
-                <option>Amenities</option>
-                <option>Articles</option>           
-            <div className="select_arrow">
-            </div>
+                <option>Amenities</option>         
+            {/* <div className="select_arrow">
+            </div> */}
           </select>
           <div>
             <button className="btn col-12 col-md-3" type="submit">
