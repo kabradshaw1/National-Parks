@@ -4,10 +4,10 @@ import SavedSearch from '../components/SavedSearch';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_SAVED } from '../utils/queries';
+import { QUERY_ALL_SAVED } from '../utils/queries';
 
 const Home = () => {
-  const { data } = useQuery(QUERY_SAVED);
+  const { data } = useQuery(QUERY_ALL_SAVED);
 
   const saved = data?.all_saved || [];
 

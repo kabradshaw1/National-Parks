@@ -26,6 +26,7 @@ const resolvers = {
         .populate('saved')
     },
     all_saved: async (parent, { username }) => {
+      console.log(username)
       const params = username ? { username } : {};
       return Saved.find(params).sort({ createdAt: -1 });
     },
