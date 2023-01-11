@@ -94,8 +94,7 @@ const SearchForm = () => {
                 <option>--Select--</option>
                 <option>Activities</option>
                 <option>Alerts</option>
-                <option>Amenities</option>
-                <option>Articles</option>           
+                <option>Amenities</option>         
             {/* <div className="select_arrow">
             </div> */}
           </select>
