@@ -92,10 +92,10 @@ const SearchForm = () => {
         >
           <select className="select pill mb-3" name='searchInput' value={searchInput} onChange={(e) => setSearchInput(e.target.value)}>
                 <option>--Select--</option>
-                <option>activities</option>
-                <option>alerts</option>
-                <option>Hello 3</option>
-                <option>Hello 4</option>           
+                <option>Activities</option>
+                <option>Alerts</option>
+                <option>Amenities</option>
+                <option>Articles</option>           
             <div className="select_arrow">
             </div>
           </select>
