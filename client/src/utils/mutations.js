@@ -25,12 +25,12 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_SEARCH = gql`
-  mutation saveSearch($searched: String!) {
-    saveSearch(searched: $searched) {
+  mutation saveSearch($searchInput: String!) {
+    saveSearch(searchInput: $searchInput) {
       _id
+      searchInput
+      createdAt
       username
-      email
-      name
     }
   }
 `;

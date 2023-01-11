@@ -25,7 +25,7 @@ const SearchForm = () => {
         console.warn("First park insertion by user!")
       }
 
-    // update saved array's cache
+      // update saved array's cache
       const { saved } = cache.readQuery({ query: QUERY_SAVED });
   
       cache.writeQuery({
@@ -69,7 +69,7 @@ const SearchForm = () => {
   
   const handleResultsSaved = async (event) => {
     event.preventDefault();
-    
+    console.log(searchInput);
     try {
       await saveSearch({
         variables: { searchInput },
@@ -92,16 +92,22 @@ const SearchForm = () => {
         >
           <select className="select pill mb-3" name='searchInput' value={searchInput} onChange={(e) => setSearchInput(e.target.value)}>
                 <option>--Select--</option>
-                <option>activities</option>
-                <option>alerts</option>
-                <option>Hello 3</option>
-                <option>Hello 4</option>           
+                <option>Activities</option>
+                <option>Alerts</option>
+                <option>Amenities</option>
+                <option>Articles</option>           
             <div className="select_arrow">
             </div>
           </select>
+          <div>
             <button className="btn col-12 col-md-3" type="submit">
-              Submit
+                Submit
             </button>
+            <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
+              Save Results
+            </button>
+          </div>
+            
         </form>
       </div>
       <div className="card mb-3">
@@ -114,9 +120,7 @@ const SearchForm = () => {
             )
           )}       
           <p className='pill mb-3'>Stuff we searched for</p>
-          <button className="btn col-12 col-md-3"  onClick={handleResultsSaved}>
-            Save Results
-          </button>
+          
         </div>
       </div>
     </>

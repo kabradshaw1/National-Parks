@@ -4,17 +4,17 @@ export const QUERY_ALL_SAVED = gql`
   query all_saved($username: String) {
     all_saved(username: $username) {
       _id
-      searched
+      searchInput
       createdAt
       username
     }
   }
 `;
 export const QUERY_SAVED = gql`
-  query saved($id: ID!) {
-    saved(_id: $id) {
+  query saved($username: String) {
+    saved(username: $username) {
       _id
-      searched
+      searchInput
       username
       createdAt
     }
@@ -29,7 +29,7 @@ export const QUERY_USER = gql`
       email
       saved {
         _id
-        searched
+        searchInput
       }
     }
   }
@@ -43,7 +43,7 @@ export const QUERY_ME = gql`
       email
       saved {
         _id
-        searched
+        searchInput
       }
     }
   }
